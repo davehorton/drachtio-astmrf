@@ -1,4 +1,4 @@
-# drachtio-astmrf
+# drachtio-astmrf [![Build Status](https://secure.travis-ci.org/davehorton/drachtio-astmrf.png)](http://travis-ci.org/davehorton/drachtio-astmrf) [![NPM version](https://badge.fury.io/js/drachtio-astmrf.svg)](http://badge.fury.io/js/drachtio-astmrf)
 
 A companion module to [drachtio-srf](https://www.npmjs.com/package/drachtio-srf) that lets you build [drachtio](https://drachtio.org) applications and utilize [Asterisk](https://www.asterisk.org) as a media server.
 
