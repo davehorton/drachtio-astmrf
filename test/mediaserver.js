@@ -73,7 +73,7 @@ test('Mrf#connect using callback', (t) => {
 }) ;
 
 test('Mrf#connect incoming call to asterisk', (t) => {
-  t.timeoutAfter(12000);
+  t.timeoutAfter(20000);
 
   const uas = new Uas();
   uas.connect()
