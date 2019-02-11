@@ -135,6 +135,9 @@ There is no public constructor for this class; the only way to obtain an Endpoin
 `destroy()` - sends a BYE to Asterisk for the SIP call related to this endpoint, which clears the associated channel.
 #### Properties
 `channel`     - the underlying channel object
+
 `channelId`   - the Asterisk channel id
+
 `channelName` - the Asterisk channel name
+
 `dialog`      - the underlying [sip dialog](https://drachtio.org/api#dialog) object
