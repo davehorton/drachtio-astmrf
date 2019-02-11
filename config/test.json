@@ -1,0 +1,21 @@
+{
+  "logger": {
+    "level": "fatal"
+  },
+  "drachtio": {
+    "host": "127.0.0.1",
+    "port": 9060,
+    "secret": "cymru"
+  },
+  "asterisk": {
+    "ari": {
+      "address": "127.0.0.1",
+      "username": "asterisk",
+      "password": "asterisk",
+      "port": 8088
+    },
+    "sip": {
+      "address": "172.21.0.11"
+    }
+  }
+}

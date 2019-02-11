@@ -1,0 +1,29 @@
+version: '2'
+
+networks:
+  drachtio-astmrf:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+
+services:
+  drachtio:
+    image: drachtio/drachtio-server:latest
+    command: drachtio --contact "sip:*;transport=udp" --loglevel debug --sofia-loglevel 9
+    container_name: drachtio
+    ports:
+      - "9060:9022/tcp"
+    networks:
+      drachtio-astmrf:
+        ipv4_address: 172.21.0.10
+
+  asterisk:
+    image: drachtio/asterisk:latest
+    command: asterisk -vvvddd 
+    container_name: asterisk
+    ports:
+      - "8088:8088/tcp"
+    networks:
+      drachtio-astmrf:
+        ipv4_address: 172.21.0.11
