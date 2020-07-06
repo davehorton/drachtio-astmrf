@@ -1,4 +1,4 @@
-const test = require('tape').test ;
+const test = require('blue-tape') ;
 const Srf = require('drachtio-srf') ;
 const Mrf = require('..') ;
 const config = require('config') ;
@@ -31,7 +31,7 @@ test('Mrf#connect using Promise', (t) => {
   srf.connect(config.get('drachtio')) ;
   const mrf = new Mrf(srf) ;
 
-  connect([srf])
+  return connect([srf])
     .then(() => {
       return mrf.connect(config.get('asterisk'));
     })
@@ -41,12 +41,8 @@ test('Mrf#connect using Promise', (t) => {
       t.ok(mediaserver.endpoints.size === 0, 'mediaserver.endpoints is initially empty');
       mediaserver.disconnect() ;
       disconnect([srf]);
-      t.end() ;
       return;
     })
-    .catch((err) => {
-      t.fail(err);
-    });
 }) ;
 
 test('Mrf#connect using callback', (t) => {
@@ -56,7 +52,7 @@ test('Mrf#connect using callback', (t) => {
   srf.connect(config.get('drachtio')) ;
   const mrf = new Mrf(srf) ;
 
-  connect([srf])
+  return connect([srf])
     .then(() => {
       return mrf.connect(config.get('asterisk'), (err, mediaserver) => {
         t.ok(mediaserver.srf instanceof Srf, 'mediaserver.srf is an Srf');
@@ -64,19 +60,15 @@ test('Mrf#connect using callback', (t) => {
         t.ok(mediaserver.endpoints.size === 0, 'mediaserver.endpoints is initially empty');
         mediaserver.disconnect() ;
         disconnect([srf]);
-        t.end() ;  
       })
     })
-    .catch((err) => {
-      t.fail(err);
-    });
 }) ;
 
 test('Mrf#connect incoming call to asterisk', (t) => {
   t.timeoutAfter(20000);
 
   const uas = new Uas();
-  uas.connect()
+  return uas.connect()
     .then(() => {
       return uas.accept(t);
     })
@@ -95,12 +87,4 @@ test('Mrf#connect incoming call to asterisk', (t) => {
         }, 500);
       });
     })
-    .then(() => {
-      return t.end();
-    })
-    .catch((err) => {
-      console.log(`error received: ${err}`);
-      console.log(output());
-      t.fail(err);
-    });
 }) ;

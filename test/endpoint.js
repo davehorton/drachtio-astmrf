@@ -1,4 +1,5 @@
-const test = require('tape').test ;
+const test = require('blue-tape') ;
+//const test = require('tape').test ;
 const Srf = require('drachtio-srf') ;
 const Mrf = require('..') ;
 const config = require('config') ;
@@ -42,12 +43,13 @@ test('MediaServer#createEndpoint create idle endpoint using callback', (t) => {
     })
     .then((mediaserver) => {
       return mediaserver.createEndpoint((err, endpoint) => {
-        if (err) t.fail(err);
-        t.ok(endpoint instanceof Endpoint, 'created endpoint');
-        endpoint.destroy() ;
-        mediaserver.disconnect() ;
+        if (err) throw err;
+        else {
+          t.ok(endpoint instanceof Endpoint, 'created endpoint');
+          endpoint.destroy() ;
+          mediaserver.disconnect() ;  
+        }
         disconnect([srf]);
-        t.end() ;
       });
     });
 }) ;

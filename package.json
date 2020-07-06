@@ -1,29 +1,29 @@
 {
   "name": "drachtio-astmrf",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "lib/mrf.js",
   "scripts": {
     "start": "node app.js",
     "jslint": "eslint lib index.js",
     "test": "NODE_ENV=test node test/ | ./node_modules/.bin/tap-spec",
-    "coverage": "NODE_ENV=test ./node_modules/.bin/istanbul cover test/ --report html"
+    "coverage": "./node_modules/.bin/nyc --reporter html --report-dir ./coverage npm run test"
   },
   "author": "Dave Horton",
   "license": "MIT",
   "dependencies": {
     "ari-client": "^2.2.0",
-    "drachtio-srf": "^4.4.22",
-    "uuid": "^3.3.3"
+    "drachtio-srf": "^4.4.36",
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "blue-tape": "^1.0.0",
-    "clear-module": "^4.0.0",
-    "config": "^3.2.4",
-    "istanbul": "^0.4.5",
-    "tap": "^14.10.1",
+    "clear-module": "^4.1.1",
+    "config": "^3.3.1",
+    "nyc": "^15.1.0",
+    "tap": "^14.10.7",
     "tap-dot": "^2.0.0",
     "tap-spec": "^5.0.0",
-    "tape": "^4.11.0"
+    "tape": "^5.0.1"
   }
 }
